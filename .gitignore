@@ -55,10 +55,6 @@ build/
 # Java class files
 *.class
 
-# built native files
-*.o
-*.so
-
 # generated files
 bin/
 gen/
@@ -105,3 +101,4 @@ Thumbs.db
 *~
 #*#
 example/src/main/obj
+photofilterssdk/src/main/obj

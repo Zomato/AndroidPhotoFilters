@@ -330,7 +330,8 @@
         <module name="VisibilityModifier">
             <property name="packageAllowed" value="true"/>
             <property name="protectedAllowed" value="true"/>
-            <property name="publicMemberPattern" value="^serialVersionUID$"/>
+            <property name="publicMemberPattern" value="^[a-zA-Z0-9]$"/>
+            <!--<property name="allowPublicImmutableFields" value="true"/>-->
         </module>
 
         <!-- Checks that classes (except abtract one) define a ctor and don't rely on the default one. !-->

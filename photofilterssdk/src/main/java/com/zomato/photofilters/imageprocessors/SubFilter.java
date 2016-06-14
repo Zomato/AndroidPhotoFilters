@@ -3,10 +3,12 @@ package com.zomato.photofilters.imageprocessors;
 import android.graphics.Bitmap;
 
 /**
- * Created by varun on 27/07/15.
+ * @author varun on 27/07/15.
  */
 public interface SubFilter {
-	Bitmap process(Bitmap inputImage);
-	Object getTag();
-	void setTag(Object tag);
+    Bitmap process(Bitmap inputImage);
+
+    Object getTag();
+
+    void setTag(Object tag);
 }

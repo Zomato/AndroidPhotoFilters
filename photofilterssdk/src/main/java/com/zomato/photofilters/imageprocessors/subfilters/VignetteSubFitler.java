@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-
 import com.zomato.photofilters.R;
 import com.zomato.photofilters.imageprocessors.SubFilter;
 
@@ -15,68 +14,65 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  */
 public class VignetteSubFitler implements SubFilter {
 
-	private static String TAG = "";
-	private Context context;
+    private static String TAG = "";
+    private Context context;
 
-	// value of alpha is between 0-255
-	private int alpha = 0;
+    // value of alpha is between 0-255
+    private int alpha = 0;
 
-	/**
-	 * Initialise Vignette subfilter
-	 * @param context
-	 * @param alpha value of alpha ranges from 0-255 (Intensity of Vignette effect)
-	 */
-	public VignetteSubFitler(Context context, int alpha) {
-		this.context = context;
-		this.alpha = alpha;
-	}
+    /**
+     * Initialise Vignette subfilter
+     *
+     * @param alpha value of alpha ranges from 0-255 (Intensity of Vignette effect)
+     */
+    public VignetteSubFitler(Context context, int alpha) {
+        this.context = context;
+        this.alpha = alpha;
+    }
 
-	@Override
-	public Bitmap process(Bitmap inputImage) {
+    @Override
+    public Bitmap process(Bitmap inputImage) {
 
-		Bitmap vignette = BitmapFactory.decodeResource(context.getResources(),
-				R.drawable.vignette);
+        Bitmap vignette = BitmapFactory.decodeResource(context.getResources(),
+                R.drawable.vignette);
 
-		vignette = Bitmap.createScaledBitmap(vignette, inputImage.getWidth(), inputImage.getHeight(), true);
-		Paint paint = new Paint();
-		paint.setAntiAlias(true);
-		paint.setAlpha(alpha);
+        vignette = Bitmap.createScaledBitmap(vignette, inputImage.getWidth(), inputImage.getHeight(), true);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setAlpha(alpha);
 
-		Canvas comboImage = new Canvas(inputImage);
-		comboImage.drawBitmap(vignette, 0f, 0f, paint);
+        Canvas comboImage = new Canvas(inputImage);
+        comboImage.drawBitmap(vignette, 0f, 0f, paint);
 
-		return inputImage;
-	}
+        return inputImage;
+    }
 
-	@Override
-	public Object getTag() {
-		return TAG;
-	}
+    @Override
+    public Object getTag() {
+        return TAG;
+    }
 
-	@Override
-	public void setTag(Object tag) {
-		TAG = (String) tag;
-	}
+    @Override
+    public void setTag(Object tag) {
+        TAG = (String) tag;
+    }
 
-	/**
-	 * Change alpha value to new value
-	 * @param alpha
-	 */
-	public void setAlpha(int alpha) {
-		this.alpha = alpha;
-	}
+    /**
+     * Change alpha value to new value
+     */
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
+    }
 
-	/**
-	 * Changes alpha value by that number
-	 * @param value
-	 */
-	public void changeAlpha (int value) {
-		this.alpha += value;
-		if(alpha > 255) {
-			alpha = 255;
-		}
-		else if (alpha <0) {
-			alpha = 0;
-		}
-	}
+    /**
+     * Changes alpha value by that number
+     */
+    public void changeAlpha(int value) {
+        this.alpha += value;
+        if (alpha > 255) {
+            alpha = 255;
+        } else if (alpha < 0) {
+            alpha = 0;
+        }
+    }
 }

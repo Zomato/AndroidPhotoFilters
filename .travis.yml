@@ -1,0 +1,48 @@
+language: android
+android:
+  components:
+    #- platform-tools
+    - tools
+    - build-tools-23.0.3
+    - android-23
+    - extra-android-m2repository
+
+    # Additional components
+    #- add-on
+    #- extra
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    #- sys-img-armeabi-v7a-android-21
+
+
+  jdk:
+    # Check Travis JDKs http://docs.travis-ci.com/user/languages/java/#Testing-Against-Multiple-JDKs
+    # Test against one or more JDKs: 'jdk' is combined with 'env' to construct a build matrix.
+    # - openjdk7
+    - oraclejdk7
+
+sudo: false
+
+env:
+  - TERM=dumb
+
+# Emulator Management: Create, Start and Wait
+#before_script:
+  #- echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+  #- emulator -avd test -no-skin -no-audio -no-window &
+  #- curl http://is.gd/android_wait_for_emulator > android-wait-for-emulator
+  #- chmod u+x android-wait-for-emulator
+  #- ./android-wait-for-emulator
+  #- adb shell input keyevent 82 &
+
+script: ./gradlew clean test
+
+after_failure:
+  # Customize this line, 'app' is the specific app module name of this project. Shows log.
+  - export MY_MOD="app"
+  #- export MY_LOG_DIR="$(pwd)/${MY_MOD}/build/outputs/reports/androidTests/connected/"
+  - export MY_LOG_DIR="$(pwd)/${MY_MOD}/build/reports/tests/debug/'
+  - pwd && cd "${MY_LOG_DIR:-.}" && pwd && ls -al
+  - apt-get install -qq lynx && lynx --dump index.html > myIndex.log
+  - for file in *.html; do echo "$file"; echo "====================="; lynx --dump $file; done || true

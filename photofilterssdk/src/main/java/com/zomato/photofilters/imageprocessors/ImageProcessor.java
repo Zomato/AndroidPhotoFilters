@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 /**
  * @author Varun on 29/06/15.
  */
-public class ImageProcessor {
+public final class ImageProcessor {
+    private ImageProcessor() {
+    }
 
-    private static final String TAG = ImageProcessor.class.getSimpleName();
-
-    public static Bitmap applyCurves(int[] RGB, int[] red, int[] green, int[] blue, Bitmap inputImage) {
+    public static Bitmap applyCurves(int[] rgb, int[] red, int[] green, int[] blue, Bitmap inputImage) {
 
         // create output bitmap
         Bitmap outputImage = inputImage;
@@ -21,8 +21,8 @@ public class ImageProcessor {
         int[] pixels = new int[width * height];
         outputImage.getPixels(pixels, 0, width, 0, 0, width, height);
 
-        if (RGB != null) {
-            pixels = NativeImageProcessor.applyRGBCurve(pixels, RGB, width, height);
+        if (rgb != null) {
+            pixels = NativeImageProcessor.applyRGBCurve(pixels, rgb, width, height);
         }
 
         if (!(red == null && green == null && blue == null)) {
@@ -33,8 +33,6 @@ public class ImageProcessor {
             outputImage.setPixels(pixels, 0, width, 0, 0, width, height);
         } catch (IllegalStateException ise) {
         }
-        ;
-        // return final image
         return outputImage;
     }
 

@@ -7,7 +7,10 @@ import android.graphics.Path;
 /**
  * @author Varun on 30/06/15.
  */
-public class GeneralUtils {
+public final class GeneralUtils {
+
+    private GeneralUtils() {
+    }
 
     public static Bitmap generateCircularBitmap(Bitmap input) {
 

@@ -5,15 +5,14 @@ import android.graphics.Bitmap;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * This Class represents a ImageFilter and includes many subfilters within, we add different subfilters to this class's
  * object and they are then processed in that particular order
  */
 public class Filter {
-
-    private static final String TAG = "FILTER_CLASS";
-    ArrayList<SubFilter> subFilters = new ArrayList<>();
+    private List<SubFilter> subFilters = new ArrayList<>();
 
     public Filter(Filter filter) {
         this.subFilters = filter.subFilters;

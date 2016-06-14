@@ -8,34 +8,38 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
- * Subfilter to tweak RGB channels of an image
+ * Subfilter to tweak rgb channels of an image
  */
 public class ToneCurveSubFilter implements SubFilter {
-    private static String TAG = "";
+    private static String tag = "";
 
     // These are knots which contains the plot points
-    private Point[] RGBKnots, greenKnots, redKnots, blueKnots;
-    private int[] RGB, R, G, B;
-
-    private Point[] straightKnots;
+    private Point[] rgbKnots;
+    private Point[] greenKnots;
+    private Point[] redKnots;
+    private Point[] blueKnots;
+    private int[] rgb;
+    private int[] r;
+    private int[] g;
+    private int[] b;
 
     /**
      * Initialise ToneCurveSubfilter (NOTE : Don't pass null knots, pass straight line instead)
      * Knots are the points in 2D taken by tweaking photoshop channels(plane ranging from 0-255)
      *
-     * @param RGBKnots   RGB Knots
+     * @param rgbKnots   rgb Knots
      * @param redKnots   Knots in Red Channel
      * @param greenKnots Knots in green Channel
      * @param blueKnots  Knots in Blue channel
      */
-    public ToneCurveSubFilter(Point[] RGBKnots, Point[] redKnots, Point[] greenKnots, Point[] blueKnots) {
-        straightKnots = new Point[2];
+    public ToneCurveSubFilter(Point[] rgbKnots, Point[] redKnots, Point[] greenKnots, Point[] blueKnots) {
+        Point[] straightKnots = new Point[2];
         straightKnots[0] = new Point(0, 0);
         straightKnots[1] = new Point(255, 255);
-        if (RGBKnots == null) {
-            this.RGBKnots = straightKnots;
+        if (rgbKnots == null) {
+            this.rgbKnots = straightKnots;
         } else {
-            this.RGBKnots = RGBKnots;
+            this.rgbKnots = rgbKnots;
         }
         if (redKnots == null) {
             this.redKnots = straightKnots;
@@ -56,36 +60,40 @@ public class ToneCurveSubFilter implements SubFilter {
 
     @Override
     public Bitmap process(Bitmap inputImage) {
-        RGBKnots = sortPointsOnXAxis(RGBKnots);
+        rgbKnots = sortPointsOnXAxis(rgbKnots);
         redKnots = sortPointsOnXAxis(redKnots);
         greenKnots = sortPointsOnXAxis(greenKnots);
         blueKnots = sortPointsOnXAxis(blueKnots);
-        if (RGB == null)
-            RGB = BezierSpline.curveGenerator(RGBKnots);
+        if (rgb == null) {
+            rgb = BezierSpline.curveGenerator(rgbKnots);
+        }
 
-        if (R == null)
-            R = BezierSpline.curveGenerator(redKnots);
+        if (r == null) {
+            r = BezierSpline.curveGenerator(redKnots);
+        }
 
-        if (G == null)
-            G = BezierSpline.curveGenerator(greenKnots);
+        if (g == null) {
+            g = BezierSpline.curveGenerator(greenKnots);
+        }
 
-        if (B == null)
-            B = BezierSpline.curveGenerator(blueKnots);
+        if (b == null) {
+            b = BezierSpline.curveGenerator(blueKnots);
+        }
 
-        inputImage = ImageProcessor.applyCurves(RGB, R, G, B, inputImage);
-        return inputImage;
+        return ImageProcessor.applyCurves(rgb, r, g, b, inputImage);
     }
 
     public Point[] sortPointsOnXAxis(Point[] points) {
-        if (points == null)
+        if (points == null) {
             return null;
+        }
         for (int s = 1; s < points.length - 1; s++) {
             for (int k = 0; k <= points.length - 2; k++) {
-                if (points[k].X > points[k + 1].X) {
+                if (points[k].x > points[k + 1].x) {
                     float temp = 0;
-                    temp = points[k].X;
-                    points[k].X = points[k + 1].X; //swapping values
-                    points[k + 1].X = temp;
+                    temp = points[k].x;
+                    points[k].x = points[k + 1].x; //swapping values
+                    points[k + 1].x = temp;
                 }
             }
         }
@@ -94,11 +102,11 @@ public class ToneCurveSubFilter implements SubFilter {
 
     @Override
     public String getTag() {
-        return TAG;
+        return tag;
     }
 
     @Override
     public void setTag(Object tag) {
-        TAG = (String) tag;
+        ToneCurveSubFilter.tag = (String) tag;
     }
 }

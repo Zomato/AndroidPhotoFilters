@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
 
                 List<ThumbnailItem> thumbs = ThumbnailsManager.processThumbs(context);
 
-                ThumbnailsAdapter adapter = new ThumbnailsAdapter(thumbs, context, (ThumbnailCallback) activity);
+                ThumbnailsAdapter adapter = new ThumbnailsAdapter(thumbs, (ThumbnailCallback) activity);
                 thumbListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

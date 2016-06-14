@@ -11,13 +11,11 @@ import java.util.List;
  *         <p/>
  *         Singleton Class Used to Manage filters and process them all at once
  */
-public class ThumbnailsManager {
-    private static List<ThumbnailItem> filterThumbs;
-    private static List<ThumbnailItem> processedThumbs;
+public final class ThumbnailsManager {
+    private static List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>(10);
+    private static List<ThumbnailItem> processedThumbs = new ArrayList<ThumbnailItem>(10);
 
-    public ThumbnailsManager() {
-        filterThumbs = new ArrayList<ThumbnailItem>();
-        processedThumbs = new ArrayList<ThumbnailItem>();
+    private ThumbnailsManager() {
     }
 
     public static void addThumb(ThumbnailItem thumbnailItem) {

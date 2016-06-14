@@ -9,13 +9,15 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  * Subfilter used to overlay bitmap with the color defined
  */
 public class ColorOverlaySubFilter implements SubFilter {
-    private static String TAG = "";
+    private static String tag = "";
 
     // the color overlay depth is between 0-255
-    protected int colorOverlayDepth;
+    private final int colorOverlayDepth;
 
     // these values are between 0-1
-    protected float colorOverlayRed, colorOverlayGreen, colorOverlayBlue;
+    private final float colorOverlayRed;
+    private final float colorOverlayGreen;
+    private final float colorOverlayBlue;
 
     /**
      * Initialize Color Overlay Subfilter
@@ -34,17 +36,18 @@ public class ColorOverlaySubFilter implements SubFilter {
 
     @Override
     public Bitmap process(Bitmap inputImage) {
-        inputImage = ImageProcessor.doColorOverlay(colorOverlayDepth, colorOverlayRed, colorOverlayGreen, colorOverlayBlue, inputImage);
-        return inputImage;
+        return ImageProcessor.doColorOverlay(
+                colorOverlayDepth, colorOverlayRed, colorOverlayGreen, colorOverlayBlue, inputImage
+        );
     }
 
     @Override
     public String getTag() {
-        return TAG;
+        return tag;
     }
 
     @Override
     public void setTag(Object tag) {
-        TAG = (String) tag;
+        ColorOverlaySubFilter.tag = (String) tag;
     }
 }

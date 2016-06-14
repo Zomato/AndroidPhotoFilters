@@ -3,7 +3,7 @@ apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
 // Add checkstyle, findbugs, pmd and lint to the check task.
-check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+check.dependsOn 'checkstyle', /*'findbugs', 'pmd',*/ 'lint'
 
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/quality/checkstyle/checkstyle.xml")

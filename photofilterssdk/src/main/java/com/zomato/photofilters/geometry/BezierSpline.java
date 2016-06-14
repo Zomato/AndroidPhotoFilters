@@ -149,16 +149,18 @@ public final class BezierSpline {
             float[] rhs = new float[n];
 
             // Set right hand side x values
-            for (int i = 1; i < n - 1; ++i)
+            for (int i = 1; i < n - 1; ++i) {
                 rhs[i] = 4 * knots[i].x + 2 * knots[i + 1].x;
+            }
             rhs[0] = knots[0].x + 2 * knots[1].x;
             rhs[n - 1] = (8 * knots[n - 1].x + knots[n].x) / 2.0f;
             // Get first control points x-values
             float[] x = getFirstControlPoints(rhs);
 
             // Set right hand side y values
-            for (int i = 1; i < n - 1; ++i)
+            for (int i = 1; i < n - 1; ++i) {
                 rhs[i] = 4 * knots[i].y + 2 * knots[i + 1].y;
+            }
             rhs[0] = knots[0].y + 2 * knots[1].y;
             rhs[n - 1] = (8 * knots[n - 1].y + knots[n].y) / 2.0f;
             // Get first control points y-values
@@ -184,8 +186,9 @@ public final class BezierSpline {
             b = (i < n - 1 ? 4.0f : 3.5f) - tmp[i];
             x[i] = (rhs[i] - x[i - 1]) / b;
         }
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i < n; i++) {
             x[n - i - 1] -= tmp[n - i] * x[n - i]; // Backsubstitution.
+        }
         return x;
     }
 }

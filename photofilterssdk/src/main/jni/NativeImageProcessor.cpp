@@ -271,25 +271,25 @@ static void brightness(int width, int height, int* pixels, int value){
 }
 
 
-static void applyChannelCurves(int width, int height, int* pixels, int* R, int* G, int* B){
+static void applyChannelCurves(int width, int height, int* pixels, int*r, int*g, int*b){
     int red;
     int green;
     int blue;
     int alpha;
 
     for (int i=0; i<width*height; i++) {
-        if ( R != NULL)
-            red = (R[(pixels[i] >> 16) & 0xFF]<< 16) & 0x00FF0000;
+        if (r != NULL)
+            red = (r[(pixels[i] >> 16) & 0xFF] << 16) & 0x00FF0000;
         else
             red = (pixels[i] << 16) & 0x00FF0000;
 
-        if ( G != NULL)
-            green = (G[(pixels[i] >> 8) & 0xFF]<< 8) & 0x0000FF00;
+        if (g != NULL)
+            green = (g[(pixels[i] >> 8) & 0xFF] << 8) & 0x0000FF00;
         else
             green = (pixels[i] << 8) & 0x0000FF00;
 
-        if ( B != NULL)
-            blue = B[pixels[i] & 0xFF] & 0x000000FF;
+        if (b != NULL)
+            blue = b[pixels[i] & 0xFF] & 0x000000FF;
         else
             blue = pixels[i] & 0x000000FF;
 
@@ -299,14 +299,14 @@ static void applyChannelCurves(int width, int height, int* pixels, int* R, int* 
     }
 }
 
-static void applyRGBCurve(int width,int height,int* pixels,int* RGB){
+static void applyRGBCurve(int width,int height,int* pixels,int*rgb){
     int R[256];
     int G[256];
     int B[256];
     for (int i=0; i<256; i++){
-        R[i] = (RGB[i] << 16) & 0x00FF0000;
-        G[i] = (RGB[i] << 8) & 0x0000FF00;
-        B[i] = RGB[i] & 0x000000FF;
+        R[i] = (rgb[i] << 16) & 0x00FF0000;
+        G[i] = (rgb[i] << 8) & 0x0000FF00;
+        B[i] = rgb[i] & 0x000000FF;
     }
 
     for (int i=0; i<width*height ; i++) {
@@ -335,28 +335,28 @@ static inline void releaseArray(JNIEnv* env, jintArray array1, jint* array2) {
 
 
 JNIEXPORT jintArray
-Java_com_zomato_photofilters_imageprocessors_NativeImageProcessor_applyRGBCurve(JNIEnv * env,jobject thiz,jintArray pixels, jintArray RGB, jint width, jint height){
+Java_com_zomato_photofilters_imageprocessors_NativeImageProcessor_applyRGBCurve(JNIEnv * env, jobject thiz, jintArray pixels, jintArray rgb, jint width, jint height){
 jint* pixelsBuff = getPointerArray(env, pixels);
-jint* RGBBuff    = getPointerArray(env, RGB);
+jint* RGBBuff    = getPointerArray(env, rgb);
 applyRGBCurve(width,height,pixelsBuff,RGBBuff);
 jintArray result = jintToJintArray(env, width * height, pixelsBuff);
 releaseArray(env, pixels, pixelsBuff);
-releaseArray(env, RGB, RGBBuff);
+releaseArray(env, rgb, RGBBuff);
 return result;
 }
 
 JNIEXPORT jintArray
-Java_com_zomato_photofilters_imageprocessors_NativeImageProcessor_applyChannelCurves(JNIEnv * env,jobject thiz,jintArray pixels, jintArray R, jintArray G, jintArray B, jint width, jint height){
+Java_com_zomato_photofilters_imageprocessors_NativeImageProcessor_applyChannelCurves(JNIEnv * env, jobject thiz, jintArray pixels, jintArray r, jintArray g, jintArray b, jint width, jint height){
 jint* pixelsBuff = getPointerArray(env, pixels);
-jint* RBuff   = getPointerArray(env, R);
-jint* GBuff   = getPointerArray(env, G);
-jint* BBuff   = getPointerArray(env, B);
+jint* RBuff   = getPointerArray(env, r);
+jint* GBuff   = getPointerArray(env, g);
+jint* BBuff   = getPointerArray(env, b);
 applyChannelCurves(width, height, pixelsBuff, RBuff, GBuff, BBuff);
 jintArray result = jintToJintArray(env, width * height, pixelsBuff);
 releaseArray(env, pixels, pixelsBuff);
-releaseArray(env, R, RBuff);
-releaseArray(env, G, GBuff);
-releaseArray(env, B, BBuff);
+releaseArray(env, r, RBuff);
+releaseArray(env, g, GBuff);
+releaseArray(env, b, BBuff);
 return result;
 }
 

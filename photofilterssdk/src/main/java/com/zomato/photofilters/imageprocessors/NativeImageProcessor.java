@@ -8,9 +8,9 @@ public final class NativeImageProcessor {
     private NativeImageProcessor() {
     }
 
-    public static native int[] applyRGBCurve(int[] pixels, int[] RGB, int width, int height);
+    public static native int[] applyRGBCurve(int[] pixels, int[] rgb, int width, int height);
 
-    public static native int[] applyChannelCurves(int[] pixels, int[] R, int[] G, int[] B, int width, int height);
+    public static native int[] applyChannelCurves(int[] pixels, int[] r, int[] g, int[] b, int width, int height);
 
     public static native int[] doBrightness(int[] pixels, int value, int width, int height);
 

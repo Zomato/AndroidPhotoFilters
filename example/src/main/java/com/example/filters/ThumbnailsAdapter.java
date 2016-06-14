@@ -1,13 +1,11 @@
 package com.example.filters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.nineoldandroids.view.ViewHelper;
 
 import java.util.List;
@@ -16,17 +14,14 @@ import java.util.List;
  * @author Varun on 01/07/15.
  */
 public class ThumbnailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     private static final String TAG = "THUMBNAILS_ADAPTER";
     private static int lastPosition = -1;
     private ThumbnailCallback thumbnailCallback;
     private List<ThumbnailItem> dataSet;
-    private Context context;
 
-    public ThumbnailsAdapter(List<ThumbnailItem> dataSet, Context context, ThumbnailCallback thumbnailCallback) {
+    public ThumbnailsAdapter(List<ThumbnailItem> dataSet, ThumbnailCallback thumbnailCallback) {
         Log.v(TAG, "Thumbnails Adapter has " + dataSet.size() + " items");
         this.dataSet = dataSet;
-        this.context = context;
         this.thumbnailCallback = thumbnailCallback;
     }
 
@@ -74,7 +69,7 @@ public class ThumbnailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public static class ThumbnailsViewHolder extends RecyclerView.ViewHolder {
-        protected ImageView thumbnail;
+        public ImageView thumbnail;
 
         public ThumbnailsViewHolder(View v) {
             super(v);

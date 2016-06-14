@@ -14,7 +14,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  */
 public class VignetteSubFitler implements SubFilter {
 
-    private static String TAG = "";
+    private static String tag = "";
     private Context context;
 
     // value of alpha is between 0-255
@@ -32,9 +32,7 @@ public class VignetteSubFitler implements SubFilter {
 
     @Override
     public Bitmap process(Bitmap inputImage) {
-
-        Bitmap vignette = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.vignette);
+        Bitmap vignette = BitmapFactory.decodeResource(context.getResources(), R.drawable.vignette);
 
         vignette = Bitmap.createScaledBitmap(vignette, inputImage.getWidth(), inputImage.getHeight(), true);
         Paint paint = new Paint();
@@ -49,12 +47,12 @@ public class VignetteSubFitler implements SubFilter {
 
     @Override
     public Object getTag() {
-        return TAG;
+        return tag;
     }
 
     @Override
     public void setTag(Object tag) {
-        TAG = (String) tag;
+        VignetteSubFitler.tag = (String) tag;
     }
 
     /**

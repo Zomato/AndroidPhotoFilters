@@ -10,7 +10,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  */
 public class ContrastSubFilter implements SubFilter {
 
-    private static String TAG = "";
+    private static String tag = "";
 
     // The value is in fraction, value 1 has no effect
     private float contrast = 0;
@@ -26,18 +26,17 @@ public class ContrastSubFilter implements SubFilter {
 
     @Override
     public Bitmap process(Bitmap inputImage) {
-        inputImage = ImageProcessor.doContrast(contrast, inputImage);
-        return inputImage;
+        return ImageProcessor.doContrast(contrast, inputImage);
     }
 
     @Override
     public String getTag() {
-        return TAG;
+        return tag;
     }
 
     @Override
     public void setTag(Object tag) {
-        TAG = (String) tag;
+        ContrastSubFilter.tag = (String) tag;
     }
 
     /**

@@ -9,9 +9,9 @@ import android.view.animation.PathInterpolator;
 /**
  * @author Varun on 29/06/15.
  */
-public class BezierSpline {
-
-    private static final String TAG = BezierSpline.class.getSimpleName();
+public final class BezierSpline {
+    private BezierSpline() {
+    }
 
     /**
      * Generates Curve {in a plane ranging from 0-255} using the knots provided
@@ -43,7 +43,12 @@ public class BezierSpline {
         path.moveTo(knots[0].X / 255.0f, knots[0].Y / 255.0f);
 
         for (int index = 1; index < knots.length; index++) {
-            path.quadTo(controlPoints[index - 1].X / 255.0f, controlPoints[index - 1].Y / 255.0f, knots[index].X / 255.0f, knots[index].Y / 255.0f);
+            path.quadTo(
+                    controlPoints[index - 1].X / 255.0f,
+                    controlPoints[index - 1].Y / 255.0f,
+                    knots[index].X / 255.0f,
+                    knots[index].Y / 255.0f
+            );
             path.moveTo(knots[index].X / 255.0f, knots[index].Y / 255.0f);
         }
 
@@ -137,7 +142,7 @@ public class BezierSpline {
             // 3P1 = 2P0 + P3
             controlPoints[0] = new Point((2 * knots[0].X + knots[1].X) / 3, (2 * knots[0].Y + knots[1].Y) / 3);
             // P2 = 2P1 – P0
-//            controlPoints[1][0] = new Point( 2 * controlPoints[0][0].X - knots[0].X, 2 * controlPoints[0][0].Y - knots[0].Y);
+            //controlPoints[1][0] = new Point(2*controlPoints[0][0].X - knots[0].X, 2*controlPoints[0][0].Y-knots[0].Y);
         } else {
             // Calculate first Bezier control points
             // Right hand side vector

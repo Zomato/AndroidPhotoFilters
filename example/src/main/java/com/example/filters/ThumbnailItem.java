@@ -12,7 +12,7 @@ public class ThumbnailItem {
     public Bitmap image;
     public Filter filter;
 
-    public ThumbnailItem(){
+    public ThumbnailItem() {
         image = null;
         filter = new Filter();
     }

@@ -2,7 +2,7 @@ package com.zomato.photofilters.imageprocessors;
 
 
 /**
- * Created by Varun on 30/06/15.
+ * @author Varun on 30/06/15.
  */
 public class NativeImageProcessor {
 
@@ -17,5 +17,5 @@ public class NativeImageProcessor {
 
     public native static int[] doColorOverlay(int[] pixels, int depth, float red, float green, float blue, int width, int height);
 
-    public native static int[] doSaturation(int[]pixels, float level, int width, int height);
+    public native static int[] doSaturation(int[] pixels, float level, int width, int height);
 }

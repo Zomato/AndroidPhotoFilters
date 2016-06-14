@@ -15,8 +15,6 @@ public class BezierSpline {
 
     /**
      * Generates Curve {in a plane ranging from 0-255} using the knots provided
-     * @param knots
-     * @return
      */
     public static int[] curveGenerator(Point[] knots) {
         if (knots == null) {

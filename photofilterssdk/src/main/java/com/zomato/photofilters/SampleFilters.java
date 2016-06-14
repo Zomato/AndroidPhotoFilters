@@ -11,7 +11,7 @@ import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubFilter;
  */
 public class SampleFilters {
 
-    public static Filter getStarLitFilter(){
+    public static Filter getStarLitFilter() {
         Point[] RGBKnots;
         RGBKnots = new Point[8];
         RGBKnots[0] = new Point(0, 0);
@@ -27,7 +27,7 @@ public class SampleFilters {
         return filter;
     }
 
-    public static Filter getBlueMessFilter(){
+    public static Filter getBlueMessFilter() {
         Point[] redKnots;
         redKnots = new Point[8];
         redKnots[0] = new Point(0, 0);
@@ -45,7 +45,7 @@ public class SampleFilters {
         return filter;
     }
 
-    public static Filter getAweStruckVibeFilter(){
+    public static Filter getAweStruckVibeFilter() {
         Point[] RGBKnots, redKnots, greenKnots, blueKnots;
 
         RGBKnots = new Point[5];
@@ -86,7 +86,7 @@ public class SampleFilters {
         return filter;
     }
 
-    public static Filter getLimeStutterFilter(){
+    public static Filter getLimeStutterFilter() {
         Point[] blueKnots;
         blueKnots = new Point[3];
         blueKnots[0] = new Point(0, 0);
@@ -98,7 +98,7 @@ public class SampleFilters {
         return filter;
     }
 
-    public static Filter getNightWhisperFilter(){
+    public static Filter getNightWhisperFilter() {
         Point[] RGBKnots, redKnots, greenKnots, blueKnots;
 
         RGBKnots = new Point[3];

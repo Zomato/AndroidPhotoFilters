@@ -18,20 +18,22 @@ public class ImageProcessor {
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
 
-        int[] pixels = new int[width*height];
+        int[] pixels = new int[width * height];
         outputImage.getPixels(pixels, 0, width, 0, 0, width, height);
 
-        if (RGB != null){
+        if (RGB != null) {
             pixels = NativeImageProcessor.applyRGBCurve(pixels, RGB, width, height);
         }
 
-        if (!(red==null && green==null && blue==null)){
+        if (!(red == null && green == null && blue == null)) {
             pixels = NativeImageProcessor.applyChannelCurves(pixels, red, green, blue, width, height);
         }
 
         try {
             outputImage.setPixels(pixels, 0, width, 0, 0, width, height);
-        } catch (IllegalStateException ise) {};
+        } catch (IllegalStateException ise) {
+        }
+        ;
         // return final image
         return outputImage;
     }
@@ -40,7 +42,7 @@ public class ImageProcessor {
 
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
-        int[] pixels = new int[width*height];
+        int[] pixels = new int[width * height];
 
         inputImage.getPixels(pixels, 0, width, 0, 0, width, height);
         NativeImageProcessor.doBrightness(pixels, value, width, height);
@@ -49,11 +51,11 @@ public class ImageProcessor {
         return inputImage;
     }
 
-    public static Bitmap doContrast(float value, Bitmap inputImage){
+    public static Bitmap doContrast(float value, Bitmap inputImage) {
 
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
-        int[] pixels = new int[width*height];
+        int[] pixels = new int[width * height];
 
         inputImage.getPixels(pixels, 0, width, 0, 0, width, height);
         NativeImageProcessor.doContrast(pixels, value, width, height);
@@ -66,7 +68,7 @@ public class ImageProcessor {
     public static Bitmap doColorOverlay(int depth, float red, float green, float blue, Bitmap inputImage) {
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
-        int[] pixels = new int[width*height];
+        int[] pixels = new int[width * height];
 
         inputImage.getPixels(pixels, 0, width, 0, 0, width, height);
         NativeImageProcessor.doColorOverlay(pixels, depth, red, green, blue, width, height);
@@ -78,7 +80,7 @@ public class ImageProcessor {
     public static Bitmap doSaturation(Bitmap inputImage, float level) {
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
-        int[] pixels = new int[width*height];
+        int[] pixels = new int[width * height];
 
         inputImage.getPixels(pixels, 0, width, 0, 0, width, height);
         NativeImageProcessor.doSaturation(pixels, level, width, height);

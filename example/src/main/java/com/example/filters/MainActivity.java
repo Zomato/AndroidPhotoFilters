@@ -16,15 +16,14 @@ import com.zomato.photofilters.imageprocessors.Filter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ThumbnailCallback{
+public class MainActivity extends AppCompatActivity implements ThumbnailCallback {
+    static {
+        System.loadLibrary("NativeImageProcessor");
+    }
+
     private Activity activity;
     private RecyclerView thumbListView;
     private ImageView placeHolderImageView;
-
-    static
-    {
-        System.loadLibrary("NativeImageProcessor");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +33,14 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
         initUIWidgets();
     }
 
-    private void initUIWidgets(){
+    private void initUIWidgets() {
         thumbListView = (RecyclerView) findViewById(R.id.thumbnails);
         placeHolderImageView = (ImageView) findViewById(R.id.place_holder_imageview);
         placeHolderImageView.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getApplicationContext().getResources(), R.drawable.photo), 640, 640, false));
         initHorizontalList();
     }
 
-    private void initHorizontalList(){
+    private void initHorizontalList() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         layoutManager.scrollToPosition(0);
@@ -50,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
         bindDataToAdapter();
     }
 
-    private void bindDataToAdapter(){
+    private void bindDataToAdapter() {
         final Context context = this.getApplication();
-        Handler handler=new Handler();
-        Runnable r = new Runnable(){
+        Handler handler = new Handler();
+        Runnable r = new Runnable() {
             public void run() {
                 Bitmap thumbImage = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.photo), 640, 640, false);
                 ThumbnailItem t1 = new ThumbnailItem();
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
 
                 List<ThumbnailItem> thumbs = ThumbnailsManager.processThumbs(context);
 
-                ThumbnailsAdapter adapter = new ThumbnailsAdapter(thumbs, context, (ThumbnailCallback)activity);
+                ThumbnailsAdapter adapter = new ThumbnailsAdapter(thumbs, context, (ThumbnailCallback) activity);
                 thumbListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

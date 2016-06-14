@@ -1,7 +1,6 @@
 package com.zomato.photofilters.imageprocessors.subfilters;
 
 import android.graphics.Bitmap;
-
 import com.zomato.photofilters.geometry.BezierSpline;
 import com.zomato.photofilters.geometry.Point;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
@@ -23,15 +22,16 @@ public class ToneCurveSubFilter implements SubFilter {
     /**
      * Initialise ToneCurveSubfilter (NOTE : Don't pass null knots, pass straight line instead)
      * Knots are the points in 2D taken by tweaking photoshop channels(plane ranging from 0-255)
-     * @param RGBKnots RGB Knots
-     * @param redKnots Knots in Red Channel
+     *
+     * @param RGBKnots   RGB Knots
+     * @param redKnots   Knots in Red Channel
      * @param greenKnots Knots in green Channel
-     * @param blueKnots Knots in Blue channel
+     * @param blueKnots  Knots in Blue channel
      */
     public ToneCurveSubFilter(Point[] RGBKnots, Point[] redKnots, Point[] greenKnots, Point[] blueKnots) {
         straightKnots = new Point[2];
-        straightKnots[0] = new Point(0,0);
-        straightKnots[1] = new Point(255,255);
+        straightKnots[0] = new Point(0, 0);
+        straightKnots[1] = new Point(255, 255);
         if (RGBKnots == null) {
             this.RGBKnots = straightKnots;
         } else {
@@ -76,16 +76,16 @@ public class ToneCurveSubFilter implements SubFilter {
         return inputImage;
     }
 
-    public Point[] sortPointsOnXAxis(Point[] points){
+    public Point[] sortPointsOnXAxis(Point[] points) {
         if (points == null)
             return null;
-        for (int s=1; s<points.length-1 ; s++) {
-            for (int k = 0; k <= points.length-2 ; k++) {
-                if (points[k].X > points[k+1].X) {
+        for (int s = 1; s < points.length - 1; s++) {
+            for (int k = 0; k <= points.length - 2; k++) {
+                if (points[k].X > points[k + 1].X) {
                     float temp = 0;
                     temp = points[k].X;
-                    points[k].X = points[k+1].X; //swapping values
-                    points[k+1].X = temp;
+                    points[k].X = points[k + 1].X; //swapping values
+                    points[k + 1].X = temp;
                 }
             }
         }

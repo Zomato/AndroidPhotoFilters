@@ -39,17 +39,17 @@ public final class BezierSpline {
         Point[] controlPoints = calculateControlPoints(knots);
         Path path = new Path();
         path.moveTo(0, 0);
-        path.lineTo(knots[0].X / 255.0f, knots[0].Y / 255.0f);
-        path.moveTo(knots[0].X / 255.0f, knots[0].Y / 255.0f);
+        path.lineTo(knots[0].x / 255.0f, knots[0].y / 255.0f);
+        path.moveTo(knots[0].x / 255.0f, knots[0].y / 255.0f);
 
         for (int index = 1; index < knots.length; index++) {
             path.quadTo(
-                    controlPoints[index - 1].X / 255.0f,
-                    controlPoints[index - 1].Y / 255.0f,
-                    knots[index].X / 255.0f,
-                    knots[index].Y / 255.0f
+                    controlPoints[index - 1].x / 255.0f,
+                    controlPoints[index - 1].y / 255.0f,
+                    knots[index].x / 255.0f,
+                    knots[index].y / 255.0f
             );
-            path.moveTo(knots[index].X / 255.0f, knots[index].Y / 255.0f);
+            path.moveTo(knots[index].x / 255.0f, knots[index].y / 255.0f);
         }
 
         path.lineTo(1, 1);
@@ -62,8 +62,8 @@ public final class BezierSpline {
             allPoints[x] = 255.0f * pathInterpolator.getInterpolation((float) x / 255.0f);
         }
 
-        allPoints[0] = knots[0].Y;
-        allPoints[255] = knots[knots.length - 1].Y;
+        allPoints[0] = knots[0].y;
+        allPoints[255] = knots[knots.length - 1].y;
         return validateCurve(allPoints);
     }
 
@@ -73,12 +73,12 @@ public final class BezierSpline {
         Point[] controlPoints = calculateControlPoints(knots);
         Path path = new Path();
         path.moveTo(0, 0);
-        path.lineTo(knots[0].X, knots[0].Y);
-        path.moveTo(knots[0].X, knots[0].Y);
+        path.lineTo(knots[0].x, knots[0].y);
+        path.moveTo(knots[0].x, knots[0].y);
 
         for (int index = 1; index < knots.length; index++) {
-            path.quadTo(controlPoints[index - 1].X, controlPoints[index - 1].Y, knots[index].X, knots[index].Y);
-            path.moveTo(knots[index].X, knots[index].Y);
+            path.quadTo(controlPoints[index - 1].x, controlPoints[index - 1].y, knots[index].x, knots[index].y);
+            path.moveTo(knots[index].x, knots[index].y);
         }
 
         path.lineTo(255, 255);
@@ -109,13 +109,13 @@ public final class BezierSpline {
         } while (pm.nextContour());
 
 
-        allPoints[0] = knots[0].Y;
+        allPoints[0] = knots[0].y;
         for (int i = 0; i < 256; i++) {
             if (allPoints[i] == -1) {
                 allPoints[i] = allPoints[i - 1];
             }
         }
-        allPoints[255] = knots[knots.length - 1].Y;
+        allPoints[255] = knots[knots.length - 1].y;
         return validateCurve(allPoints);
     }
 
@@ -140,28 +140,28 @@ public final class BezierSpline {
 
         if (n == 1) { // Special case: Bezier curve should be a straight line.
             // 3P1 = 2P0 + P3
-            controlPoints[0] = new Point((2 * knots[0].X + knots[1].X) / 3, (2 * knots[0].Y + knots[1].Y) / 3);
+            controlPoints[0] = new Point((2 * knots[0].x + knots[1].x) / 3, (2 * knots[0].y + knots[1].y) / 3);
             // P2 = 2P1 – P0
-            //controlPoints[1][0] = new Point(2*controlPoints[0][0].X - knots[0].X, 2*controlPoints[0][0].Y-knots[0].Y);
+            //controlPoints[1][0] = new Point(2*controlPoints[0][0].x - knots[0].x, 2*controlPoints[0][0].y-knots[0].y);
         } else {
             // Calculate first Bezier control points
             // Right hand side vector
             float[] rhs = new float[n];
 
-            // Set right hand side X values
+            // Set right hand side x values
             for (int i = 1; i < n - 1; ++i)
-                rhs[i] = 4 * knots[i].X + 2 * knots[i + 1].X;
-            rhs[0] = knots[0].X + 2 * knots[1].X;
-            rhs[n - 1] = (8 * knots[n - 1].X + knots[n].X) / 2.0f;
-            // Get first control points X-values
+                rhs[i] = 4 * knots[i].x + 2 * knots[i + 1].x;
+            rhs[0] = knots[0].x + 2 * knots[1].x;
+            rhs[n - 1] = (8 * knots[n - 1].x + knots[n].x) / 2.0f;
+            // Get first control points x-values
             float[] x = getFirstControlPoints(rhs);
 
-            // Set right hand side Y values
+            // Set right hand side y values
             for (int i = 1; i < n - 1; ++i)
-                rhs[i] = 4 * knots[i].Y + 2 * knots[i + 1].Y;
-            rhs[0] = knots[0].Y + 2 * knots[1].Y;
-            rhs[n - 1] = (8 * knots[n - 1].Y + knots[n].Y) / 2.0f;
-            // Get first control points Y-values
+                rhs[i] = 4 * knots[i].y + 2 * knots[i + 1].y;
+            rhs[0] = knots[0].y + 2 * knots[1].y;
+            rhs[n - 1] = (8 * knots[n - 1].y + knots[n].y) / 2.0f;
+            // Get first control points y-values
             float[] y = getFirstControlPoints(rhs);
             for (int i = 0; i < n; ++i) {
                 controlPoints[i] = new Point(x[i], y[i]);

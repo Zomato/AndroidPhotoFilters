@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply from: 'maven-push.gradle'
 apply from: '../config/quality.gradle'
 
 android {

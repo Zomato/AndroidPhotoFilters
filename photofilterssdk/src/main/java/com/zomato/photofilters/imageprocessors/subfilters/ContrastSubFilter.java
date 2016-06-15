@@ -6,6 +6,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
+ * @author varun
  * Class to add Contrast Subfilter
  */
 public class ContrastSubFilter implements SubFilter {

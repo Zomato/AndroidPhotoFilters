@@ -8,6 +8,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
+ * @author varun
  * Subfilter to tweak rgb channels of an image
  */
 public class ToneCurveSubFilter implements SubFilter {

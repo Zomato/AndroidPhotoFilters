@@ -10,7 +10,6 @@ public final class ImageProcessor {
     }
 
     public static Bitmap applyCurves(int[] rgb, int[] red, int[] green, int[] blue, Bitmap inputImage) {
-
         // create output bitmap
         Bitmap outputImage = inputImage;
 
@@ -37,7 +36,6 @@ public final class ImageProcessor {
     }
 
     public static Bitmap doBrightness(int value, Bitmap inputImage) {
-
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
         int[] pixels = new int[width * height];
@@ -50,7 +48,6 @@ public final class ImageProcessor {
     }
 
     public static Bitmap doContrast(float value, Bitmap inputImage) {
-
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
         int[] pixels = new int[width * height];

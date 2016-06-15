@@ -27,14 +27,14 @@ public final class BezierSpline {
         }
 
         if (Build.VERSION.SDK_INT >= 21) {
-            return getOutputPointsV21(knots);
+            return getOutputPointsForNewerDevices(knots);
         } else {
-            return getOutputPointsOlderDevices(knots);
+            return getOutputPointsForOlderDevices(knots);
         }
     }
 
     // This is for lollipop and newer devices
-    private static int[] getOutputPointsV21(Point[] knots) {
+    private static int[] getOutputPointsForNewerDevices(Point[] knots) {
 
         Point[] controlPoints = calculateControlPoints(knots);
         Path path = new Path();
@@ -69,7 +69,7 @@ public final class BezierSpline {
 
 
     //This is for devices older than lollipop
-    private static int[] getOutputPointsOlderDevices(Point[] knots) {
+    private static int[] getOutputPointsForOlderDevices(Point[] knots) {
         Point[] controlPoints = calculateControlPoints(knots);
         Path path = new Path();
         path.moveTo(0, 0);

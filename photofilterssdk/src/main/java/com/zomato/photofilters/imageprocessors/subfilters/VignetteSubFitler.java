@@ -10,6 +10,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
+ * @author varun
  * Subfilter to add Vignette effect on an image
  */
 public class VignetteSubFitler implements SubFilter {

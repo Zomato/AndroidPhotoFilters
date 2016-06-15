@@ -6,6 +6,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
+ * @author varun
  * subfilter used to tweak brightness of the Bitmap
  */
 public class BrightnessSubFilter implements SubFilter {

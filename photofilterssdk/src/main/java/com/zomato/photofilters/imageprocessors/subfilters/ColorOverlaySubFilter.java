@@ -6,6 +6,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
 
 
 /**
+ * @author varun
  * Subfilter used to overlay bitmap with the color defined
  */
 public class ColorOverlaySubFilter implements SubFilter {

@@ -31,7 +31,7 @@ Simply add Dependency on artifact in your `build.gradle` :
 
 ```gradle
 dependencies {
-    compile 'com.github.zomato:androidphotofilters:1.0.0'
+    compile 'com.github.zomato:androidphotofilters:1.0.1'
     ...
 ```
 

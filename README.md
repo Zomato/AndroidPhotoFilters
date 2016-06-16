@@ -26,7 +26,18 @@ Bitmap outputImage = fooFilter.process(inputImage);
 ## Implementation
 
 ### Adding Dependency
-Include photofiltersdk in your `settings.gradle` like this :
+
+Simply add Dependency on artifact in your `build.gradle` : 
+
+```gradle
+dependencies {
+    compile 'com.github.zomato:androidphotofilters:1.0.0'
+    ...
+```
+
+**OR** 
+
+Copy|Paste  photofilterssdk from the repo to your project and include photofiltersdk in your `settings.gradle` like this :
 
 ```gradle
 include ':photofilterssdk'
@@ -36,6 +47,9 @@ Add dependency in your `build.gradle` :
 ```gradle
 compile project(':photofilterssdk')
 ```
+
+### Usage
+
 Load native library in your activity :
 
 ```java
@@ -47,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     ...
 ```
 
-### Usage
+then
+
 ```java
 Filter myFilter = new Filter();
 myFilter.addSubFilter(new BrightnessSubFilter(30));

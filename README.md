@@ -142,7 +142,7 @@ This filter can be used to put vignette effect on the image.
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new VignetteSubfilter(100));
+myFilter.addSubFilter(new VignetteSubfilter(context, 100));
 Bitmap outputImage = myFilter.process(inputImage);
 ```
 

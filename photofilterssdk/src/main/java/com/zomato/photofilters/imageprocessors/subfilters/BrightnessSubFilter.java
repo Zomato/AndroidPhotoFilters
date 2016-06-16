@@ -9,7 +9,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  * @author varun
  * subfilter used to tweak brightness of the Bitmap
  */
-public class BrightnessSubFilter implements SubFilter {
+public class BrightnessSubfilter implements SubFilter {
     private static String tag = "";
     // Value is in integer
     private int brightness = 0;
@@ -19,7 +19,7 @@ public class BrightnessSubFilter implements SubFilter {
      *
      * @param brightness Integer brightness value {value 0 has no effect}
      */
-    public BrightnessSubFilter(int brightness) {
+    public BrightnessSubfilter(int brightness) {
         this.brightness = brightness;
     }
 
@@ -35,7 +35,7 @@ public class BrightnessSubFilter implements SubFilter {
 
     @Override
     public void setTag(Object tag) {
-        BrightnessSubFilter.tag = (String) tag;
+        BrightnessSubfilter.tag = (String) tag;
     }
 
     public void setBrightness(int brightness) {

@@ -11,7 +11,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  * @author varun
  * Subfilter to tweak rgb channels of an image
  */
-public class ToneCurveSubFilter implements SubFilter {
+public class ToneCurveSubfilter implements SubFilter {
     private static String tag = "";
 
     // These are knots which contains the plot points
@@ -33,7 +33,7 @@ public class ToneCurveSubFilter implements SubFilter {
      * @param greenKnots Knots in green Channel
      * @param blueKnots  Knots in Blue channel
      */
-    public ToneCurveSubFilter(Point[] rgbKnots, Point[] redKnots, Point[] greenKnots, Point[] blueKnots) {
+    public ToneCurveSubfilter(Point[] rgbKnots, Point[] redKnots, Point[] greenKnots, Point[] blueKnots) {
         Point[] straightKnots = new Point[2];
         straightKnots[0] = new Point(0, 0);
         straightKnots[1] = new Point(255, 255);
@@ -108,6 +108,6 @@ public class ToneCurveSubFilter implements SubFilter {
 
     @Override
     public void setTag(Object tag) {
-        ToneCurveSubFilter.tag = (String) tag;
+        ToneCurveSubfilter.tag = (String) tag;
     }
 }

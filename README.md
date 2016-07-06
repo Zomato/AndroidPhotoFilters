@@ -1,5 +1,8 @@
 # PhotoFiltersSDK
 
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidPhotoFilters-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3703)
+
 PhotoFiltersSDK aims to provide fast, powerful and flexible image processing instrument for creating awesome effects on any image media. 
 
 Library supports OS on API 15 and above.

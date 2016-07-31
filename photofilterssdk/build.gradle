@@ -6,6 +6,10 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    sourceSets.main {
+        jni.srcDirs = []
+    }
+
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 23

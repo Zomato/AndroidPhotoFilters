@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.nineoldandroids.view.ViewHelper;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ public class ThumbnailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.thumbnailCallback = thumbnailCallback;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         Log.v(TAG, "On Create View Holder Called");
@@ -36,31 +34,27 @@ public class ThumbnailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int i) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int i) {
         final ThumbnailItem thumbnailItem = dataSet.get(i);
         Log.v(TAG, "On Bind View Called");
         ThumbnailsViewHolder thumbnailsViewHolder = (ThumbnailsViewHolder) holder;
         thumbnailsViewHolder.thumbnail.setImageBitmap(thumbnailItem.image);
         thumbnailsViewHolder.thumbnail.setScaleType(ImageView.ScaleType.FIT_START);
-        setAnimation(thumbnailsViewHolder.thumbnail, i);
+        setAnimation(thumbnailsViewHolder.thumbnail);
         thumbnailsViewHolder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (lastPosition != i) {
+                if (lastPosition != holder.getAdapterPosition()) {
                     thumbnailCallback.onThumbnailClick(thumbnailItem.filter);
-                    lastPosition = i;
+                    lastPosition = holder.getAdapterPosition();
                 }
             }
-
         });
     }
 
-    private void setAnimation(View viewToAnimate, int position) {
-        {
-            ViewHelper.setAlpha(viewToAnimate, .0f);
-            com.nineoldandroids.view.ViewPropertyAnimator.animate(viewToAnimate).alpha(1).setDuration(250).start();
-            lastPosition = position;
-        }
+    private void setAnimation(View viewToAnimate) {
+        viewToAnimate.setAlpha(.0f);
+        viewToAnimate.animate().alpha(1).setDuration(250).start();
     }
 
     @Override

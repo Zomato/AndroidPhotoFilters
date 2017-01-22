@@ -2,14 +2,14 @@ package com.zomato.photofilters.imageprocessors.subfilters;
 
 import android.graphics.Bitmap;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun
  * Class to add Contrast Subfilter
  */
-public class ContrastSubfilter implements SubFilter {
+public class ContrastSubfilter implements Subfilter {
 
     private static String tag = "";
 

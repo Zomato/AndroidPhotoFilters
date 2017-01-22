@@ -2,14 +2,14 @@ package com.zomato.photofilters.imageprocessors.subfilters;
 
 import android.graphics.Bitmap;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun
  * subfilter used to tweak brightness of the Bitmap
  */
-public class BrightnessSubfilter implements SubFilter {
+public class BrightnessSubfilter implements Subfilter {
     private static String tag = "";
     // Value is in integer
     private int brightness = 0;

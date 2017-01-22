@@ -26,7 +26,7 @@ public final class SampleFilters {
         rgbKnots[6] = new Point(207, 233);
         rgbKnots[7] = new Point(255, 255);
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, null, null, null));
+        filter.addSubfilter(new ToneCurveSubfilter(rgbKnots, null, null, null));
         return filter;
     }
 
@@ -42,9 +42,9 @@ public final class SampleFilters {
         redKnots[6] = new Point(225, 242);
         redKnots[7] = new Point(255, 255);
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(null, redKnots, null, null));
-        filter.addSubFilter(new BrightnessSubfilter(30));
-        filter.addSubFilter(new ContrastSubfilter(1f));
+        filter.addSubfilter(new ToneCurveSubfilter(null, redKnots, null, null));
+        filter.addSubfilter(new BrightnessSubfilter(30));
+        filter.addSubfilter(new ContrastSubfilter(1f));
         return filter;
     }
 
@@ -88,7 +88,7 @@ public final class SampleFilters {
         blueKnots[6] = new Point(255, 255);
 
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
+        filter.addSubfilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
         return filter;
     }
 
@@ -100,7 +100,7 @@ public final class SampleFilters {
         blueKnots[2] = new Point(255, 255);
         // Check whether output is null or not.
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(null, null, null, blueKnots));
+        filter.addSubfilter(new ToneCurveSubfilter(null, null, null, blueKnots));
         return filter;
     }
 
@@ -132,7 +132,7 @@ public final class SampleFilters {
         blueKnots[2] = new Point(255, 255);
 
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
+        filter.addSubfilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
         return filter;
     }
 }

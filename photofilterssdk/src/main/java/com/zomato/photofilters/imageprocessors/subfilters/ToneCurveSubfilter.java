@@ -4,14 +4,14 @@ import android.graphics.Bitmap;
 import com.zomato.photofilters.geometry.BezierSpline;
 import com.zomato.photofilters.geometry.Point;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun
  * Subfilter to tweak rgb channels of an image
  */
-public class ToneCurveSubfilter implements SubFilter {
+public class ToneCurveSubfilter implements Subfilter {
     private static String tag = "";
 
     // These are knots which contains the plot points

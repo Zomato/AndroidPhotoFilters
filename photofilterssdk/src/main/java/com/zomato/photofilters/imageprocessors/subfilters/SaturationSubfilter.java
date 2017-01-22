@@ -2,13 +2,13 @@ package com.zomato.photofilters.imageprocessors.subfilters;
 
 import android.graphics.Bitmap;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun on 28/07/15.
  */
-public class SaturationSubfilter implements SubFilter {
+public class SaturationSubfilter implements Subfilter {
     private static String tag = "";
 
     // The Level value is float, where level = 1 has no effect on the image

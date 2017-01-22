@@ -1,13 +1,6 @@
 package com.zomato.photofilters.imageprocessors;
 
-
 import android.graphics.Bitmap;
-
-import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.ColorOverlaySubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.VignetteSubfilter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,10 +11,10 @@ import java.util.List;
  * object and they are then processed in that particular order
  */
 public class Filter {
-    private List<SubFilter> subFilters = new ArrayList<>();
+    private List<Subfilter> subfilters = new ArrayList<>();
 
     public Filter(Filter filter) {
-        this.subFilters = filter.subFilters;
+        this.subfilters = filter.subfilters;
     }
 
     public Filter() {
@@ -30,32 +23,32 @@ public class Filter {
     /**
      * Adds a Subfilter to the Main Filter
      *
-     * @param subFilter Subfilter like contrast, brightness, tone Curve etc. subfilter
-     * @see BrightnessSubfilter
-     * @see ColorOverlaySubfilter
-     * @see ContrastSubfilter
-     * @see ToneCurveSubfilter
-     * @see VignetteSubfilter
-     * @see com.zomato.photofilters.imageprocessors.subfilters.SaturationSubfilter
+     * @param subfilter Subfilter like contrast, brightness, tone Curve etc. subfilter
+     * @see .subfilters.BrightnessSubFilter
+     * @see .subfilters.ColorOverlaySubFilter
+     * @see .subfilters.ContrastSubFilter
+     * @see .subfilters.ToneCurveSubFilter
+     * @see .subfilters.VignetteSubFilter
+     * @see .subfilters.SaturationSubFilter
      */
-    public void addSubFilter(SubFilter subFilter) {
-        subFilters.add(subFilter);
+    public void addSubfilter(Subfilter subfilter) {
+        subfilters.add(subfilter);
     }
 
     /**
      * Clears all the subfilters from the Parent Filter
      */
     public void clearSubFilters() {
-        subFilters.clear();
+        subfilters.clear();
     }
 
     /**
      * Removes the subfilter containing Tag from the Parent Filter
      */
     public void removeSubFilterWithTag(String tag) {
-        Iterator<SubFilter> iterator = subFilters.iterator();
+        Iterator<Subfilter> iterator = subfilters.iterator();
         while (iterator.hasNext()) {
-            SubFilter subFilter = iterator.next();
+            Subfilter subFilter = iterator.next();
             if (subFilter.getTag().equals(tag)) {
                 iterator.remove();
             }
@@ -65,10 +58,10 @@ public class Filter {
     /**
      * Returns The filter containing Tag
      */
-    public SubFilter getSubFilterByTag(String tag) {
-        for (SubFilter subFilter : subFilters) {
-            if (subFilter.getTag().equals(tag)) {
-                return subFilter;
+    public Subfilter getSubFilterByTag(String tag) {
+        for (Subfilter subfilter : subfilters) {
+            if (subfilter.getTag().equals(tag)) {
+                return subfilter;
             }
         }
         return null;
@@ -83,13 +76,13 @@ public class Filter {
     public Bitmap processFilter(Bitmap inputImage) {
         Bitmap outputImage = inputImage;
         if (outputImage != null) {
-            for (SubFilter subFilter : subFilters) {
+            for (Subfilter subfilter : subfilters) {
                 try {
-                    outputImage = subFilter.process(outputImage);
+                    outputImage = subfilter.process(outputImage);
                 } catch (OutOfMemoryError oe) {
                     System.gc();
                     try {
-                        outputImage = subFilter.process(outputImage);
+                        outputImage = subfilter.process(outputImage);
                     } catch (OutOfMemoryError ignored) {
                     }
                 }

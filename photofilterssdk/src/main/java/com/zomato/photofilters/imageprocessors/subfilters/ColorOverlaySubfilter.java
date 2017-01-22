@@ -2,14 +2,14 @@ package com.zomato.photofilters.imageprocessors.subfilters;
 
 import android.graphics.Bitmap;
 import com.zomato.photofilters.imageprocessors.ImageProcessor;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun
  * Subfilter used to overlay bitmap with the color defined
  */
-public class ColorOverlaySubfilter implements SubFilter {
+public class ColorOverlaySubfilter implements Subfilter {
     private static String tag = "";
 
     // the color overlay depth is between 0-255

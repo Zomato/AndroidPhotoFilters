@@ -6,14 +6,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import com.zomato.photofilters.R;
-import com.zomato.photofilters.imageprocessors.SubFilter;
+import com.zomato.photofilters.imageprocessors.Subfilter;
 
 
 /**
  * @author varun
  * Subfilter to add Vignette effect on an image
  */
-public class VignetteSubfilter implements SubFilter {
+public class VignetteSubfilter implements Subfilter {
 
     private static String tag = "";
     private Context context;

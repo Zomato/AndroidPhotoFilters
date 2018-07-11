@@ -151,5 +151,13 @@ Bitmap outputImage = myFilter.process(inputImage);
 
 VignetteSubfilter takes int as an argument whoes value ranges from 0-255, which defines intesity of the vignette effect.
 
+## Proguard
+If you are using proguard, consider adding the following to your proguard rules:
+
+```proguard
+-keep class com.zomato.photofilters.** {*;}
+-keepclassmembers  class com.zomato.photofilters.** {*;}
+```
+
 ## License
 This library falls under [Apache v2](LICENSE)

@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keep class com.zomato.photofilters.** {*;}
+-keepclassmembers  class com.zomato.photofilters.** {*;}

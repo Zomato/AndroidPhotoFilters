@@ -13,7 +13,7 @@ import com.zomato.photofilters.imageprocessors.SubFilter;
  * @author varun
  * Subfilter to add Vignette effect on an image
  */
-public class VignetteSubfilter implements SubFilter {
+public class VignetteSubFilter implements SubFilter {
 
     private static String tag = "";
     private Context context;
@@ -26,7 +26,7 @@ public class VignetteSubfilter implements SubFilter {
      *
      * @param alpha value of alpha ranges from 0-255 (Intensity of Vignette effect)
      */
-    public VignetteSubfilter(Context context, int alpha) {
+    public VignetteSubFilter(Context context, int alpha) {
         this.context = context;
         this.alpha = alpha;
     }
@@ -53,7 +53,7 @@ public class VignetteSubfilter implements SubFilter {
 
     @Override
     public void setTag(Object tag) {
-        VignetteSubfilter.tag = (String) tag;
+        VignetteSubFilter.tag = (String) tag;
     }
 
     /**

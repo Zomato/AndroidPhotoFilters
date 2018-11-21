@@ -2,9 +2,9 @@ package com.zomato.photofilters;
 
 import com.zomato.photofilters.geometry.Point;
 import com.zomato.photofilters.imageprocessors.Filter;
-import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubfilter;
-import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubfilter;
+import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubFilter;
 
 /**
  * @author Varun on 01/07/15.
@@ -26,7 +26,7 @@ public final class SampleFilters {
         rgbKnots[6] = new Point(207, 233);
         rgbKnots[7] = new Point(255, 255);
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, null, null, null));
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, null, null, null));
         return filter;
     }
 
@@ -42,9 +42,9 @@ public final class SampleFilters {
         redKnots[6] = new Point(225, 242);
         redKnots[7] = new Point(255, 255);
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(null, redKnots, null, null));
-        filter.addSubFilter(new BrightnessSubfilter(30));
-        filter.addSubFilter(new ContrastSubfilter(1f));
+        filter.addSubFilter(new ToneCurveSubFilter(null, redKnots, null, null));
+        filter.addSubFilter(new BrightnessSubFilter(30));
+        filter.addSubFilter(new ContrastSubFilter(1f));
         return filter;
     }
 
@@ -88,7 +88,7 @@ public final class SampleFilters {
         blueKnots[6] = new Point(255, 255);
 
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, redKnots, greenKnots, blueKnots));
         return filter;
     }
 
@@ -100,7 +100,7 @@ public final class SampleFilters {
         blueKnots[2] = new Point(255, 255);
         // Check whether output is null or not.
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(null, null, null, blueKnots));
+        filter.addSubFilter(new ToneCurveSubFilter(null, null, null, blueKnots));
         return filter;
     }
 
@@ -132,7 +132,7 @@ public final class SampleFilters {
         blueKnots[2] = new Point(255, 255);
 
         Filter filter = new Filter();
-        filter.addSubFilter(new ToneCurveSubfilter(rgbKnots, redKnots, greenKnots, blueKnots));
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, redKnots, greenKnots, blueKnots));
         return filter;
     }
 }

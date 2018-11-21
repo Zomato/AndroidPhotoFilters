@@ -36,4 +36,11 @@ public class SaturationSubFilter implements SubFilter {
     public void setLevel(float level) {
         this.level = level;
     }
+
+    /**
+     * Get the current saturation level
+     */
+    public float getSaturation() {
+        return level;
+    }
 }

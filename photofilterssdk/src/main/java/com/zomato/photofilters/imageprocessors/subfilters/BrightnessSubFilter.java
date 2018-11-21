@@ -49,4 +49,10 @@ public class BrightnessSubFilter implements SubFilter {
         this.brightness += value;
     }
 
+    /**
+     * Get current Brightness level
+     */
+    public int getBrightness() {
+        return brightness;
+    }
 }

@@ -53,4 +53,11 @@ public class ContrastSubFilter implements SubFilter {
     public void changeContrast(float value) {
         this.contrast += value;
     }
+
+    /**
+     * Get current Contrast level
+     */
+    public float getContrast() {
+        return contrast;
+    }
 }

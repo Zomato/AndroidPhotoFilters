@@ -2,6 +2,7 @@ package com.zomato.photofilters.imageprocessors;
 
 
 import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
 import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ColorOverlaySubFilter;
@@ -41,6 +42,31 @@ public class Filter {
      */
     public void addSubFilter(SubFilter subFilter) {
         subFilters.add(subFilter);
+    }
+
+    /**
+     * Adds all {@link SubFilter}s from the List to the Main Filter.
+     * @param subFilterList a list of {@link SubFilter}s; must not be null
+     */
+    public void addSubFilters(@NonNull List<SubFilter> subFilterList) {
+        subFilters.addAll(subFilterList);
+    }
+
+    /**
+     * Get a new list of currently applied subfilters.
+     *
+     * @return a {@link List} of {@link SubFilter}.
+     *         Empty if no filters are added to {@link #subFilters};
+     *         never null
+     *
+     * @see #addSubFilter(SubFilter)
+     * @see #addSubFilters(List)
+     */
+    @NonNull
+    public List<SubFilter> getSubFilters() {
+        if (subFilters == null || subFilters.isEmpty())
+            return new ArrayList<>(0);
+        return new ArrayList<>(subFilters);
     }
 
     /**

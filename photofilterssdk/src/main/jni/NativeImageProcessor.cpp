@@ -154,8 +154,8 @@ void saturation(int *pixels, float level, int width, int height) {
         g = (unsigned int) ((((float) g) / 100) * 255);
         b = (unsigned int) ((((float) b) / 100) * 255);
 
-        pixels[i] = pixels[i] & 0xFF000000 | ((int) r << 16) & 0x00FF0000 | ((int) g << 8) & 0x0000FF00 |
-                    (int) b & 0x000000FF;;
+        pixels[i] = (pixels[i] & 0xFF000000) | (((int) r << 16) & 0x00FF0000) | (((int) g << 8) & 0x0000FF00) |
+                ((int) b & 0x000000FF);
 
     }
 }
@@ -179,8 +179,8 @@ static void colorOverlay(int *pixels, int depth, float red, float green, float b
         B += (depth * blue);
         if (B > 255) { B = 255; }
 
-        pixels[i] = pixels[i] & 0xFF000000 | ((int) R << 16) & 0x00FF0000 | ((int) G << 8) & 0x0000FF00 |
-                    (int) B & 0x000000FF;
+        pixels[i] = (pixels[i] & 0xFF000000) | (((int) R << 16) & 0x00FF0000) | (((int) G << 8) & 0x0000FF00) |
+                ((int) B & 0x000000FF);
     }
 }
 
@@ -217,7 +217,7 @@ static void contrast(int width, int height, int *pixels, float value) {
         R = (int) red;
         G = (int) green;
         B = (int) blue;
-        pixels[i] = pixels[i] & 0xFF000000 | (R << 16) & 0x00FF0000 | (G << 8) & 0x0000FF00 | B & 0x000000FF;
+        pixels[i] = (pixels[i] & 0xFF000000) | ((R << 16) & 0x00FF0000) | ((G << 8) & 0x0000FF00) | (B & 0x000000FF);
     }
 }
 
@@ -250,7 +250,7 @@ static void brightness(int width, int height, int *pixels, int value) {
         else if (blue < 0)
             blue = 0;
 
-        pixels[i] = pixels[i] & 0xFF000000 | (red << 16) & 0x00FF0000 | (green << 8) & 0x0000FF00 | blue & 0x000000FF;
+        pixels[i] = (pixels[i] & 0xFF000000) | ((red << 16) & 0x00FF0000) | ((green << 8) & 0x0000FF00) | (blue & 0x000000FF);
     }
 }
 
@@ -295,7 +295,7 @@ static void applyRGBCurve(int width, int height, int *pixels, int *rgb) {
 
     for (int i = 0; i < width * height; i++) {
         pixels[i] =
-                0xFF000000 & pixels[i] | R[(pixels[i] >> 16) & 0xFF] | G[(pixels[i] >> 8) & 0xFF] | B[pixels[i] & 0xFF];
+                (0xFF000000 & pixels[i]) | (R[(pixels[i] >> 16) & 0xFF]) | (G[(pixels[i] >> 8) & 0xFF]) | (B[pixels[i] & 0xFF]);
     }
 
 }
@@ -303,7 +303,7 @@ static void applyRGBCurve(int width, int height, int *pixels, int *rgb) {
 static inline jint *getPointerArray(JNIEnv *env, jintArray buff) {
     jint *ptrBuff = NULL;
     if (buff != NULL)
-        ptrBuff = env->GetIntArrayElements(buff, false);
+        ptrBuff = env->GetIntArrayElements(buff, JNI_FALSE);
     return ptrBuff;
 }
 

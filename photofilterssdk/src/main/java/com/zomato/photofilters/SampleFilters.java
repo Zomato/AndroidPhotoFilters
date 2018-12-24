@@ -2,8 +2,11 @@ package com.zomato.photofilters;
 
 import com.zomato.photofilters.geometry.Point;
 import com.zomato.photofilters.imageprocessors.Filter;
+import com.zomato.photofilters.imageprocessors.SubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.ColorOverlaySubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.SaturationSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubFilter;
 
 /**
@@ -135,4 +138,71 @@ public final class SampleFilters {
         filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, redKnots, greenKnots, blueKnots));
         return filter;
     }
+
+    public static Filter getBlackAndWhiteFilter() {
+        Filter filter = new Filter();
+        filter.addSubFilter(new SaturationSubFilter((float) -0.99));
+        return filter;
+    }
+
+    public static Filter getArtisticBWFilter(){
+
+        Point[] redKnots;
+        redKnots = new Point[8];
+        redKnots[0] = new Point(0, 0);
+        redKnots[1] = new Point(86, 34);
+        redKnots[2] = new Point(117, 41);
+        redKnots[3] = new Point(146, 80);
+        redKnots[4] = new Point(170, 151);
+        redKnots[5] = new Point(200, 214);
+        redKnots[6] = new Point(225, 242);
+        redKnots[7] = new Point(255, 255);
+        Filter filter = new Filter();
+        filter.addSubFilter(new ToneCurveSubFilter(null, redKnots, null, null));
+        filter.addSubFilter(new SaturationSubFilter((float) -0.99));
+        return filter;
+    }
+
+    public static Filter getPurplishFilter(){
+
+        Point[] rgbKnots;
+        rgbKnots = new Point[3];
+        rgbKnots[0] = new Point(0, 0);
+        rgbKnots[1] = new Point(89, 67);
+        rgbKnots[2] = new Point(255, 255);
+        Filter filter = new Filter();
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, null, null, null));
+        filter.addSubFilter(new ColorOverlaySubFilter(100,(float)0.41,0,(float )0.68));
+        return filter;
+    }
+
+    public static Filter getSepiaFilter(){
+
+        Point[] rgbKnots;
+        rgbKnots = new Point[3];
+        rgbKnots[0] = new Point(0, 0);
+        rgbKnots[1] = new Point(73, 38);
+        rgbKnots[2] = new Point(255, 255);
+        Filter filter = new Filter();
+        filter.addSubFilter(new SaturationSubFilter((float) -0.99));
+        filter.addSubFilter(new ColorOverlaySubFilter(50,0,(float)0.38,0));
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, null, null, null));
+        return filter;
+
+
+    }
+
+
+    public static Filter getCutenessFilter(){
+        Point[] rgbKnots;
+        rgbKnots = new Point[3];
+        rgbKnots[0] = new Point(0, 0);
+        rgbKnots[1] = new Point(65, 34);
+        rgbKnots[2] = new Point(255, 255);
+        Filter filter = new Filter();
+        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, null, null, null));
+        filter.addSubFilter(new SaturationSubFilter((float) 1.72));
+        return filter;
+    }
+
 }

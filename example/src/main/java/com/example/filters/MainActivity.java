@@ -61,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 ThumbnailItem t4 = new ThumbnailItem();
                 ThumbnailItem t5 = new ThumbnailItem();
                 ThumbnailItem t6 = new ThumbnailItem();
+                ThumbnailItem t7 = new ThumbnailItem();
+                ThumbnailItem t8 = new ThumbnailItem();
+                ThumbnailItem t9 = new ThumbnailItem();
+                ThumbnailItem t10 = new ThumbnailItem();
+                ThumbnailItem t11 = new ThumbnailItem();
 
                 t1.image = thumbImage;
                 t2.image = thumbImage;
@@ -68,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 t4.image = thumbImage;
                 t5.image = thumbImage;
                 t6.image = thumbImage;
+                t7.image = thumbImage;
+                t8.image = thumbImage;
+                t9.image = thumbImage;
+                t10.image = thumbImage;
+                t11.image = thumbImage;
                 ThumbnailsManager.clearThumbs();
                 ThumbnailsManager.addThumb(t1); // Original Image
 
@@ -85,6 +95,23 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
 
                 t6.filter = SampleFilters.getNightWhisperFilter();
                 ThumbnailsManager.addThumb(t6);
+
+                t7.filter = SampleFilters.getBlackAndWhiteFilter();
+                ThumbnailsManager.addThumb(t7);
+
+                t8.filter = SampleFilters.getArtisticBWFilter();
+                ThumbnailsManager.addThumb(t8);
+
+                t9.filter = SampleFilters.getPurplishFilter();
+                ThumbnailsManager.addThumb(t9);
+
+                t10.filter = SampleFilters.getSepiaFilter();
+                ThumbnailsManager.addThumb(t10);
+
+                t11.filter = SampleFilters.getCutenessFilter();
+                ThumbnailsManager.addThumb(t11);
+
+
 
                 List<ThumbnailItem> thumbs = ThumbnailsManager.processThumbs(context);
 

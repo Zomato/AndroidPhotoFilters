@@ -12,12 +12,12 @@ Library supports OS on API 15 and above.
 ## Features
 PhotoFiltersSDK processes filter on any Image within fraction of second since processing logic is in NDK. At present following image filters are included: 
 
-* **[ToneCurveSubfilter](#tonecurve) :** With this powerful filter you can change RGB channels of any image to create great results.
-* **[SaturationSubfitler](#saturation) :** Used for changing color saturation of an image.
-* **[ColorOverlaySubfilter](#coloroverlay) :** As name suggests you can overlay any image with color of your choice.
-* **[ContrastSubfilter](#contrast) :** Used for changing contrast value of image.
-* **[BrightnessSubfilter](#brightness) :** To change brightness levels.
-* **[VignetteSubfilter](#vignette) :** To apply vignette effect on image. 
+* **[ToneCurveSubFilter](#tonecurve) :** With this powerful filter you can change RGB channels of any image to create great results.
+* **[SaturationSubFilter](#saturation) :** Used for changing color saturation of an image.
+* **[ColorOverlaySubFilter](#coloroverlay) :** As name suggests you can overlay any image with color of your choice.
+* **[ContrastSubFilter](#contrast) :** Used for changing contrast value of image.
+* **[BrightnessSubFilter](#brightness) :** To change brightness levels.
+* **[VignetteSubFilter](#vignette) :** To apply vignette effect on image.
 
 Library also comes with inbuilt Sample Filters (Refer [SampleFitlers.java](photofilterssdk/src/main/java/com/zomato/photofilters/SampleFilters.java)). Implementation is straightforward: 
 
@@ -78,7 +78,7 @@ Above code snippet will give you outputImage with increased brightness and contr
 ## Documentation
 Although there are few inbuilt filters already present, you may want to create and customize one specific to your need and show your creativity. For that you would require to know how all the Subfilters can be used. Let me take you through all of them.
 
-### <a name="tonecurve"></a>ToneCurveSubfilter
+### <a name="tonecurve"></a>ToneCurveSubFilter
 This is most awesome filter present in this library which differentiates **PhotoFiltersSDK** from other image processing libraries out there. ToneCurveSubFilter applies the changed RGB Channel curve to create effect on image.
 
 ![CurveDialog](art/curvedialog_photoshop.png)
@@ -93,63 +93,63 @@ rgbKnots[0] = new Point(0, 0);
 rgbKnots[1] = new Point(175, 139);
 rgbKnots[2] = new Point(255, 255);
        
-myFilter.addSubFilter(new ToneCurveSubfilter(rgbKnots, null, null, null));
+myFilter.addSubFilter(new ToneCurveSubFilter(rgbKnots, null, null, null));
 Bitmap outputImage = myFilter.processFilter(inputImage);
 ```
 
-The results are nearly same as we would see in photoshop and other tools. We can also specify knots for Red, Green and Blue channels (in the ToneCurveSubfilter's constructor).
+The results are nearly same as we would see in photoshop and other tools. We can also specify knots for Red, Green and Blue channels (in the ToneCurveSubFilter's constructor).
 
-### <a name="saturation"></a>SaturationSubfilter
+### <a name="saturation"></a>SaturationSubFilter
 This fitler can be used to tweak color saturation of an image. Here is the example : 
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new SaturationSubfilter(1.3f));
+myFilter.addSubFilter(new SaturationSubFilter(1.3f));
 Bitmap outputImage = myFilter.processFilter(inputImage);
 ```
 
-SaturationSubfilter takes float as an argument and has no effect for value 1.
+SaturationSubFilter takes float as an argument and has no effect for value 1.
 
-### <a name="coloroverlay"></a>ColorOverlaySubfilter
+### <a name="coloroverlay"></a>ColorOverlaySubFilter
 Increases the specified red, green and blue values for each pixel in an image.
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new ColorOverlaySubfilter(100, .2f, .2f, .0f));
+myFilter.addSubFilter(new ColorOverlaySubFilter(100, .2f, .2f, .0f));
 Bitmap outputImage = myFilter.processFilter(inputImage);
 ```
 
-### <a name="contrast"></a>ContrastSubfilter
+### <a name="contrast"></a>ContrastSubFilter
 To change the contrast levels of an image use this filter : 
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new ContrastSubfilter(1.2f));
+myFilter.addSubFilter(new ContrastSubFilter(1.2f));
 Bitmap outputImage = myFilter.processFilter(inputImage);
 ```
 
-ContrastSubfilter takes float as an argument where value 1 has no effect on the image.
+ContrastSubFilter takes float as an argument where value 1 has no effect on the image.
 
-### <a name="brightness"></a>BrightnessSubfilter
+### <a name="brightness"></a>BrightnessSubFilter
 As the name suggest, this filter is used for changing brightness levels : 
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new BrightnessSubfilter(30));
+myFilter.addSubFilter(new BrightnessSubFilter(30));
 Bitmap ouputImage = myFilter.processFilter(inputImage);
 ```
-BrightnessSubfilter takes int as an argument where value 0 has no effect. Negative values can be used to decrease brightness of the image.
+BrightnessSubFilter takes int as an argument where value 0 has no effect. Negative values can be used to decrease brightness of the image.
 
-### <a name="vignette"></a>VignetteSubfilter
+### <a name="vignette"></a>VignetteSubFilter
 This filter can be used to put vignette effect on the image. 
 
 ```java
 Filter myFilter = new Filter();
-myFilter.addSubFilter(new VignetteSubfilter(context, 100));
+myFilter.addSubFilter(new VignetteSubFilter(context, 100));
 Bitmap outputImage = myFilter.processFilter(inputImage);
 ```
 
-VignetteSubfilter takes int as an argument whoes value ranges from 0-255, which defines intesity of the vignette effect.
+VignetteSubFilter takes int as an argument whoes value ranges from 0-255, which defines intesity of the vignette effect.
 
 ## Proguard
 If you are using proguard, consider adding the following to your proguard rules:

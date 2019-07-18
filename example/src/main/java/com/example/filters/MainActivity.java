@@ -61,20 +61,40 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 ThumbnailsManager.clearThumbs();
                 ThumbnailsManager.addThumb(originalImage); // Original Image
 
+                ThumbnailItem defaultImage = new ThumbnailItem();
+                defaultImage.image = thumbImage;
+                defaultImage.filter = SampleFilters.getDefaultFilter();
+                ThumbnailsManager.addThumb(defaultImage);
+
                 ThumbnailItem starLitImage = new ThumbnailItem();
                 starLitImage.image = thumbImage;
                 starLitImage.filter = SampleFilters.getStarLitFilter();
                 ThumbnailsManager.addThumb(starLitImage);
 
+                ThumbnailItem clarendonImage = new ThumbnailItem();
+                clarendonImage.image = thumbImage;
+                clarendonImage.filter = SampleFilters.getClarendonFilter();
+                ThumbnailsManager.addThumb(clarendonImage);
+
+                ThumbnailItem seirraImage = new ThumbnailItem();
+                seirraImage.image = thumbImage;
+                seirraImage.filter = SampleFilters.getSierraFilter();
+                ThumbnailsManager.addThumb(seirraImage);
+
+                ThumbnailItem mayfairImage = new ThumbnailItem();
+                mayfairImage.image = thumbImage;
+                mayfairImage.filter = SampleFilters.getMayFairFilter();
+                ThumbnailsManager.addThumb(mayfairImage);
+
+                ThumbnailItem aweStruckVibeImage = new ThumbnailItem();
+                aweStruckVibeImage.image = thumbImage;
+                aweStruckVibeImage.filter = SampleFilters.getAweStruckVibeFilter();
+                ThumbnailsManager.addThumb(aweStruckVibeImage);
+
                 ThumbnailItem blueMessImage = new ThumbnailItem();
                 blueMessImage.image = thumbImage;
                 blueMessImage.filter = SampleFilters.getBlueMessFilter();
                 ThumbnailsManager.addThumb(blueMessImage);
-
-                ThumbnailItem aweStruckImage = new ThumbnailItem();
-                aweStruckImage.image = thumbImage;
-                aweStruckImage.filter = SampleFilters.getAweStruckVibeFilter();
-                ThumbnailsManager.addThumb(aweStruckImage);
 
                 ThumbnailItem limeStutterImage = new ThumbnailItem();
                 limeStutterImage.image = thumbImage;
@@ -82,9 +102,59 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 ThumbnailsManager.addThumb(limeStutterImage);
 
                 ThumbnailItem nightWhisperImage = new ThumbnailItem();
-                limeStutterImage.image = thumbImage;
+                nightWhisperImage.image = thumbImage;
                 nightWhisperImage.filter = SampleFilters.getNightWhisperFilter();
                 ThumbnailsManager.addThumb(nightWhisperImage);
+
+                ThumbnailItem amazonImage = new ThumbnailItem();
+                amazonImage.image = thumbImage;
+                amazonImage.filter = SampleFilters.getAmazonFilter();
+                ThumbnailsManager.addThumb(amazonImage);
+
+                ThumbnailItem audreyImage = new ThumbnailItem();
+                audreyImage.image = thumbImage;
+                audreyImage.filter = SampleFilters.getAudreyFilter();
+                ThumbnailsManager.addThumb(audreyImage);
+
+                ThumbnailItem riseImage = new ThumbnailItem();
+                riseImage.image = thumbImage;
+                riseImage.filter = SampleFilters.getRiseFilter();
+                ThumbnailsManager.addThumb(riseImage);
+
+                ThumbnailItem marsImage = new ThumbnailItem();
+                marsImage.image = thumbImage;
+                marsImage.filter = SampleFilters.getMarsFilter();
+                ThumbnailsManager.addThumb(marsImage);
+
+                ThumbnailItem aprilImage = new ThumbnailItem();
+                aprilImage.image = thumbImage;
+                aprilImage.filter = SampleFilters.getMarsFilter();
+                ThumbnailsManager.addThumb(aprilImage);
+
+                ThumbnailItem haanImage = new ThumbnailItem();
+                haanImage.image = thumbImage;
+                haanImage.filter = SampleFilters.getHaanFilter();
+                ThumbnailsManager.addThumb(haanImage);
+
+                ThumbnailItem oldManImage = new ThumbnailItem();
+                oldManImage.image = thumbImage;
+                oldManImage.filter = SampleFilters.getOldManFilter();
+                ThumbnailsManager.addThumb(oldManImage);
+
+                ThumbnailItem adeleImage = new ThumbnailItem();
+                adeleImage.image = thumbImage;
+                adeleImage.filter = SampleFilters.getAdeleFilter();
+                ThumbnailsManager.addThumb(adeleImage);
+
+                ThumbnailItem cruzImage = new ThumbnailItem();
+                cruzImage.image = thumbImage;
+                cruzImage.filter = SampleFilters.getCruzFilter();
+                ThumbnailsManager.addThumb(cruzImage);
+
+                ThumbnailItem metropolisImage = new ThumbnailItem();
+                metropolisImage.image = thumbImage;
+                metropolisImage.filter = SampleFilters.getMetropolisFilter();
+                ThumbnailsManager.addThumb(metropolisImage);
 
                 List<ThumbnailItem> thumbs = ThumbnailsManager.processThumbs(context);
 

@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
 
                 ThumbnailItem aprilImage = new ThumbnailItem();
                 aprilImage.image = thumbImage;
-                aprilImage.filter = SampleFilters.getMarsFilter();
+                aprilImage.filter = SampleFilters.getAprilFilter();
                 ThumbnailsManager.addThumb(aprilImage);
 
                 ThumbnailItem haanImage = new ThumbnailItem();

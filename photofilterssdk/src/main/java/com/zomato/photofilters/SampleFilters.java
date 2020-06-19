@@ -1,10 +1,16 @@
 package com.zomato.photofilters;
 
+import android.app.Application;
+import android.content.Context;
+
 import com.zomato.photofilters.geometry.Point;
 import com.zomato.photofilters.imageprocessors.Filter;
 import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.ColorOverlaySubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.SaturationSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ToneCurveSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.VignetteSubFilter;
 
 /**
  * @author Varun on 01/07/15.
@@ -133,6 +139,18 @@ public final class SampleFilters {
 
         Filter filter = new Filter();
         filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, redKnots, greenKnots, blueKnots));
+        return filter;
+    }
+
+    public static Filter getMonoChromeFilter() {
+
+        Filter filter = new Filter();
+//        filter.addSubFilter(new ToneCurveSubFilter(rgbKnots, redKnots, greenKnots, blueKnots));
+//        filter.addSubFilter(new BrightnessSubFilter(-100));
+        filter.addSubFilter(new SaturationSubFilter(-10));
+
+//        filter.addSubFilter(new ContrastSubFilter(2f));
+//        filter.addSubFilter(new ColorOverlaySubFilter(4, 10F, 10F, 10F));
         return filter;
     }
 }

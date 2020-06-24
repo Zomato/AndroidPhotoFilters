@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 ThumbnailItem t5 = new ThumbnailItem();
                 ThumbnailItem t6 = new ThumbnailItem();
                 ThumbnailItem t7 = new ThumbnailItem();
+                ThumbnailItem t8 = new ThumbnailItem();
 
                 t1.image = thumbImage;
                 t2.image = thumbImage;
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 t5.image = thumbImage;
                 t6.image = thumbImage;
                 t7.image = thumbImage;
+                t8.image = thumbImage;
                 ThumbnailsManager.clearThumbs();
                 ThumbnailsManager.addThumb(t1); // Original Image
 
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 t7.filter = SampleFilters.getMonoChromeFilter();
                 ThumbnailsManager.addThumb(t7);
 
+                t8.filter = SampleFilters.getVioletFilter();
+                ThumbnailsManager.addThumb(t8);
 
                 List<ThumbnailItem> thumbs = ThumbnailsManager.processThumbs(context);
 

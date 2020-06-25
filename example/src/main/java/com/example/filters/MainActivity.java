@@ -4,16 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.zomato.photofilters.SampleFilters;
 import com.zomato.photofilters.imageprocessors.Filter;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ThumbnailCallback {
@@ -38,6 +43,21 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
         placeHolderImageView = (ImageView) findViewById(R.id.place_holder_imageview);
         placeHolderImageView.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(this.getApplicationContext().getResources(), R.drawable.photo), 640, 640, false));
         initHorizontalList();
+        ImageView import_photo = (ImageView) findViewById(R.id.import_photo);
+        ImageView rotate_left = (ImageView) findViewById(R.id.rotate_left);
+        ImageView rotate_right = (ImageView) findViewById(R.id.rotate_right);
+        ImageView save_photo = (ImageView) findViewById(R.id.save_photo);
+        assert save_photo != null;
+        save_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                Bitmap filteredBitmap = ((BitmapDrawable) placeHolderImageView.getDrawable()).getBitmap();
+                MediaStore.Images.Media.insertImage(getContentResolver(), filteredBitmap,
+                        "photo_" + calendar.getTimeInMillis(), "");
+                Toast.makeText(MainActivity.this, "saved in Pictures", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initHorizontalList() {

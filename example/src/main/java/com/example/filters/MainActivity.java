@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 matrix.postRotate(90);
                 Bitmap scaledBitmap = Bitmap.createScaledBitmap(filteredBitmap, filteredBitmap.getWidth(), filteredBitmap.getHeight(), true);
                 filteredBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+                bitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
                 placeHolderImageView.setImageBitmap(filteredBitmap);
             }
         });
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 matrix.postRotate(-90);
                 Bitmap scaledBitmap = Bitmap.createScaledBitmap(filteredBitmap, filteredBitmap.getWidth(), filteredBitmap.getHeight(), true);
                 filteredBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+                bitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
                 placeHolderImageView.setImageBitmap(filteredBitmap);
             }
         });

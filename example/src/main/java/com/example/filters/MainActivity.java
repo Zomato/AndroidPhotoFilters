@@ -71,6 +71,34 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 import_photo();
             }
         });
+
+        assert rotate_right != null;
+        rotate_right.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Matrix matrix = new Matrix();
+                matrix.postRotate(90);
+                Bitmap scaledBitmap = Bitmap.createScaledBitmap(filteredBitmap, filteredBitmap.getWidth(), filteredBitmap.getHeight(), true);
+                filteredBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                placeHolderImageView.setImageBitmap(filteredBitmap);
+            }
+        });
+
+        assert rotate_left != null;
+        rotate_left.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Matrix matrix = new Matrix();
+                matrix.postRotate(-90);
+                Bitmap scaledBitmap = Bitmap.createScaledBitmap(filteredBitmap, filteredBitmap.getWidth(), filteredBitmap.getHeight(), true);
+                filteredBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+                placeHolderImageView.setImageBitmap(filteredBitmap);
+            }
+        });
     }
 
     private void initHorizontalList() {

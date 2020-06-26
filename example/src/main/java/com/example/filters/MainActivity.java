@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
     private ImageView placeHolderImageView;
     private Uri imageUri;
     private Bitmap bitmap;
+    private Bitmap filteredBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +142,8 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
     @Override
     public void onThumbnailClick(Filter filter)
     {
-        placeHolderImageView.setImageBitmap(filter.processFilter(Bitmap.createScaledBitmap(bitmap, placeHolderImageView.getDrawable().getIntrinsicWidth(), placeHolderImageView.getDrawable().getIntrinsicHeight(), false)));
+        filteredBitmap = filter.processFilter(Bitmap.createScaledBitmap(bitmap, placeHolderImageView.getDrawable().getIntrinsicWidth(), placeHolderImageView.getDrawable().getIntrinsicHeight(), false));
+        placeHolderImageView.setImageBitmap(filteredBitmap);
     }
 
     private void save_photo()
@@ -207,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 }
                 assert bitmap != null;
                 bitmap = bitmap.copy(Bitmap.Config.ARGB_8888 , true);
+                filteredBitmap = bitmap;
                 bindDataToAdapter();
             }
             else if (requestCode == 2)
@@ -223,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements ThumbnailCallback
                 }
                 assert bitmap != null;
                 bitmap = bitmap.copy(Bitmap.Config.ARGB_8888 , true);
+                filteredBitmap = bitmap;
                 bindDataToAdapter();
             }
         }

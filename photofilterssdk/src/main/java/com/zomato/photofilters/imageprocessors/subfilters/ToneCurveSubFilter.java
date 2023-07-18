@@ -85,21 +85,23 @@ public class ToneCurveSubFilter implements SubFilter {
     }
 
     public Point[] sortPointsOnXAxis(Point[] points) {
-        if (points == null) {
-            return null;
-        }
-        for (int s = 1; s < points.length - 1; s++) {
-            for (int k = 0; k <= points.length - 2; k++) {
-                if (points[k].x > points[k + 1].x) {
-                    float temp = 0;
-                    temp = points[k].x;
-                    points[k].x = points[k + 1].x; //swapping values
-                    points[k + 1].x = temp;
-                }
+    if (points == null) {
+        return null;
+    }
+    
+    for (int s = 1; s < points.length - 1; s++) {
+        for (int k = 0; k <= points.length - 2; k++) {
+            if (points[k] != null && points[k + 1] != null && points[k].x > points[k + 1].x) {
+                float temp = points[k].x;
+                points[k].x = points[k + 1].x;
+                points[k + 1].x = temp;
             }
         }
-        return points;
     }
+    
+    return points;
+}
+
 
     @Override
     public String getTag() {
